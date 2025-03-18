@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-test-app
+  namespace: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-test
+  template:
+    metadata:
+      labels:
+        app: jenkins-test
+    spec:
+      containers:
+      - name: jenkins-test-container
+        image: jenkins/jenkins-test-app:latest
+        ports:
+        - containerPort: 3000
