@@ -7,14 +7,17 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jenkins-test
+      app: hello-world-shipedge
   template:
     metadata:
       labels:
-        app: jenkins-test
+        app: hello-world-shipedge
     spec:
+      imagePullSecrets:
+        - name: i1pro-key
       containers:
-      - name: jenkins-test-container
-        image: i1pro/hello-world-app:latest
-        ports:
-        - containerPort: 3000
+        - name: app
+          image: i1pro/hello-world-app:latest
+          ports:
+            - containerPort: 3000
+
